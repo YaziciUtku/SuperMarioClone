@@ -10,7 +10,7 @@ public class PlayerMovement : MonoBehaviour
     private Animator anim;
     private bool isGrounded = false;
     private bool jumped;
-    private float jumpPower = 5f;
+    [SerializeField]private float jumpPower = 5f;
     public Transform groundCheckerPosition;
     public LayerMask groundLayer;
     public float playerSpeed = 5f;

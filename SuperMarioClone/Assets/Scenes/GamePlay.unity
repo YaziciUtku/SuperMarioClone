@@ -727,6 +727,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 7983614041113272800, guid: 06f0129b4acac4636b39ef4e0f3a3d9e, type: 3}
+      propertyPath: jumpPower
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 7983614041113272810, guid: 06f0129b4acac4636b39ef4e0f3a3d9e, type: 3}
       propertyPath: m_Name
       value: Player
@@ -737,7 +741,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7983614041113272814, guid: 06f0129b4acac4636b39ef4e0f3a3d9e, type: 3}
       propertyPath: m_GravityScale
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7983614041113272815, guid: 06f0129b4acac4636b39ef4e0f3a3d9e, type: 3}
       propertyPath: m_RootOrder
