@@ -74,7 +74,9 @@ public class SnailScript : MonoBehaviour
             {
                 if (!stunned)
                 {
+                    
                     // Apply Damage To The Player
+                    print("Damage From Left");
                 }
                 else
                 {
@@ -90,6 +92,7 @@ public class SnailScript : MonoBehaviour
                 if (!stunned)
                 {
                     // Apply Damage To The Player
+                    print("Damage From Right");
                 }
                 else
                 {
