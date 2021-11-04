@@ -64,6 +64,12 @@ public class SnailScript : MonoBehaviour
                     stunned = true;
 
                     // BEETLE CODE HERE
+
+                    if(tag == MyTags.BEETLE_TAG)
+                    {
+                        anim.Play("SnailStunned");
+                        StartCoroutine(Dead(0.5f));
+                    }
                 }
             }
         }
@@ -80,7 +86,11 @@ public class SnailScript : MonoBehaviour
                 }
                 else
                 {
-                    snailRB.velocity = new Vector2(15f, snailRB.velocity.y);
+                    if (gameObject.tag != MyTags.BEETLE_TAG)
+                    {
+                        snailRB.velocity = new Vector2(15f, snailRB.velocity.y);
+                        StartCoroutine(Dead(3f));
+                    }
                 }
             }
         }
@@ -96,7 +106,12 @@ public class SnailScript : MonoBehaviour
                 }
                 else
                 {
-                    snailRB.velocity = new Vector2(-15f, snailRB.velocity.y);
+                    if (gameObject.tag != MyTags.BEETLE_TAG)
+                    {
+                        snailRB.velocity = new Vector2(-15f, snailRB.velocity.y);
+                        StartCoroutine(Dead(3f));
+                    }
+
                 }
             }
         }
@@ -119,7 +134,7 @@ public class SnailScript : MonoBehaviour
         }
         else
         {
-            tempScale.x = -tempScale.x;
+            tempScale.x = -Mathf.Abs(tempScale.x);
             left_Collusion.position = right_Collusion_Position;
             right_Collusion.position = left_Collusion_Position;
            
@@ -127,5 +142,11 @@ public class SnailScript : MonoBehaviour
         transform.localScale = tempScale;
     }
 
+
+    IEnumerator Dead(float timer)
+    {
+        yield return new WaitForSeconds(timer);
+        gameObject.SetActive(false);
+    }
 
 }// Class
