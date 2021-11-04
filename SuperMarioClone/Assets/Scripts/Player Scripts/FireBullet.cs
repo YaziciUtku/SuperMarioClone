@@ -20,7 +20,7 @@ public class FireBullet : MonoBehaviour
         StartCoroutine(DisableBullet(5f));
     }
 
-   
+
     void Update()
     {
         Move();
@@ -35,6 +35,8 @@ public class FireBullet : MonoBehaviour
             transform.position = temp;
         }
     }
+
+  
 
     public float Speed
     {
