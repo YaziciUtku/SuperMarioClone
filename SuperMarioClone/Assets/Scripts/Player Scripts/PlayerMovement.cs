@@ -70,7 +70,7 @@ public class PlayerMovement : MonoBehaviour
     void ChechkIfGrounded()
     {
         isGrounded = Physics2D.Raycast(groundCheckerPosition.position, Vector2.down, 0.1f, groundLayer);
-        
+       
 
         if (isGrounded)
         {
@@ -89,6 +89,7 @@ public class PlayerMovement : MonoBehaviour
         {
             if (Input.GetKey(KeyCode.Space))
             {
+                
                 jumped = true;
                 playerRB.velocity = new Vector2(playerRB.velocity.x, jumpPower);
                 anim.SetBool("Jump", true);
