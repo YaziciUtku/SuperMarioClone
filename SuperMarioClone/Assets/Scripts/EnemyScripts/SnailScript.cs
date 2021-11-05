@@ -18,8 +18,8 @@ public class SnailScript : MonoBehaviour
     {
         snailRB = GetComponent<Rigidbody2D>(); 
         anim = GetComponent<Animator>();
-        left_Collusion_Position = left_Collusion.position;
-        right_Collusion_Position = right_Collusion.position;
+        left_Collusion_Position = left_Collusion.localPosition;
+        right_Collusion_Position = right_Collusion.localPosition;
     }
 
     void Start()
@@ -129,14 +129,14 @@ public class SnailScript : MonoBehaviour
         if (moveLeft)
         {
             tempScale.x = Mathf.Abs(tempScale.x);
-            left_Collusion.position = left_Collusion_Position;
-            right_Collusion.position = right_Collusion_Position;
+            left_Collusion.localPosition = left_Collusion_Position;
+            right_Collusion.localPosition = right_Collusion_Position;
         }
         else
         {
             tempScale.x = -Mathf.Abs(tempScale.x);
-            left_Collusion.position = right_Collusion_Position;
-            right_Collusion.position = left_Collusion_Position;
+            left_Collusion.localPosition = right_Collusion_Position;
+            right_Collusion.localPosition = left_Collusion_Position;
            
         }
         transform.localScale = tempScale;

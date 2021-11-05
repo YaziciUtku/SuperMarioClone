@@ -21,14 +21,22 @@ public class FrogScript : MonoBehaviour
     }
 
 
-    void Update()
+    void LateUpdate()
     {
-        
+        if(animation_Finished && animation_Started)
+        {
+            animation_Started = false;
+            transform.parent.position = transform.position;
+           // transform.localPosition = Vector3.zero;
+        }
     }
 
     IEnumerator FrogJump()
     {
         yield return new WaitForSeconds(Random.Range(1f, 4f));
+        animation_Started = true;
+        animation_Finished = false;
+
         if (jumpLeft)
         {
             anim.Play("FrogJumpLeft");
@@ -42,7 +50,7 @@ public class FrogScript : MonoBehaviour
 
     void AnimationFinished()
     {
-        
+        animation_Finished = true;
         anim.Play("FrogIdleLeft");
     }
 
