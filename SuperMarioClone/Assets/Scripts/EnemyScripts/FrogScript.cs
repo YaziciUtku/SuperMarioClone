@@ -10,8 +10,11 @@ public class FrogScript : MonoBehaviour
     private int jumpedTimes;
     private bool jumpLeft = true;
     private string coroutine_Name = "FrogJump";
+    PlayerDamage playerDamage;
+    public LayerMask playerLayer;
     private void Awake()
     {
+        playerDamage = GameObject.Find("Player").GetComponent<PlayerDamage>();
         anim = GetComponent<Animator>();
     }
 
@@ -19,7 +22,13 @@ public class FrogScript : MonoBehaviour
     {
         StartCoroutine(coroutine_Name);
     }
-
+    private void Update()
+    {
+        if (Physics2D.OverlapCircle(transform.position, 0.5f, playerLayer))
+        {
+            playerDamage.DealDamageToPlayer();
+        }
+    }
 
     void LateUpdate()
     {

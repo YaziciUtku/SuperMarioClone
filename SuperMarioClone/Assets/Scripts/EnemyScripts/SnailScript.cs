@@ -13,6 +13,7 @@ public class SnailScript : MonoBehaviour
     public Transform left_Collusion, right_Collusion, top_Collusion, down_Collusion;
     private Vector3 left_Collusion_Position, right_Collusion_Position;
     public LayerMask PlayerLayer;
+    private PlayerDamage playerDamage;
 
     private void Awake()
     {
@@ -20,6 +21,7 @@ public class SnailScript : MonoBehaviour
         anim = GetComponent<Animator>();
         left_Collusion_Position = left_Collusion.localPosition;
         right_Collusion_Position = right_Collusion.localPosition;
+        playerDamage = GameObject.Find("Player").GetComponent<PlayerDamage>();
     }
 
     void Start()
@@ -80,8 +82,8 @@ public class SnailScript : MonoBehaviour
             {
                 if (!stunned)
                 {
-                    
-                    // Apply Damage To The Player
+
+                    leftHit.collider.gameObject.GetComponent<PlayerDamage>().DealDamageToPlayer();
                     print("Damage From Left");
                 }
                 else
@@ -101,7 +103,7 @@ public class SnailScript : MonoBehaviour
             {
                 if (!stunned)
                 {
-                    // Apply Damage To The Player
+                    rightHit.collider.gameObject.GetComponent<PlayerDamage>().DealDamageToPlayer();
                     print("Damage From Right");
                 }
                 else
@@ -118,6 +120,7 @@ public class SnailScript : MonoBehaviour
 
        if(!Physics2D.Raycast(down_Collusion.position, Vector2.down, 0.1f))
         {
+           
             ChangeDirection();
         }
     }

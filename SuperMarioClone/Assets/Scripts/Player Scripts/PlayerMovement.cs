@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Cinemachine;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -14,11 +15,16 @@ public class PlayerMovement : MonoBehaviour
     public Transform groundCheckerPosition;
     public LayerMask groundLayer;
     public float playerSpeed = 5f;
+    private CinemachineVirtualCamera vcam;
+    private PlayerDamage playerDamage;
+    
 
     private void Awake()
     {
         playerRB = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
+        vcam = GameObject.Find("CM vcam1").GetComponent<CinemachineVirtualCamera>();
+        playerDamage = GetComponent<PlayerDamage>();
     }
     void Start()
     {
@@ -30,6 +36,7 @@ public class PlayerMovement : MonoBehaviour
     {
         ChechkIfGrounded();
         PlayerJump();
+        CinemachineDontFollow();
     }
 
     private void FixedUpdate()
@@ -96,6 +103,15 @@ public class PlayerMovement : MonoBehaviour
                 
             }
         }
+    }
+
+    void CinemachineDontFollow()
+    {
+        if (!playerDamage.isAlive)
+        {
+            vcam.Follow = null;
+        }
+
     }
 
 } // Class

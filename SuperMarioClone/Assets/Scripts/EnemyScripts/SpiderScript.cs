@@ -62,6 +62,10 @@ public class SpiderScript : MonoBehaviour
             StartCoroutine(SpiderDead());
             StopCoroutine(coroutine_Name);
         }
+        if(collision.tag == MyTags.PLAYER_TAG)
+        {
+            collision.gameObject.GetComponent<PlayerDamage>().DealDamageToPlayer();
+        }
     }
 
 
