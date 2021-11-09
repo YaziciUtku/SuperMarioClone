@@ -10,15 +10,13 @@ public class BossScript : MonoBehaviour
     private string coroutine_Name = "StartAttack";
     private BossHealth bossHealth;
     private bool isBossDead;
-    private SpriteRenderer sp;
-    private Vector3 startPos;
-  
+
 
     private void Awake()
     {
-        anim = GetComponent<Animator>();
+        anim = GetComponentInChildren<Animator>();
         bossHealth = GetComponent<BossHealth>();
-        sp = GetComponent<SpriteRenderer>();
+       
         
         
         
@@ -45,11 +43,7 @@ public class BossScript : MonoBehaviour
        
         
     }
-    private void LateUpdate()
-    {
-        
-    }
-
+   
     void BackToIdle()
     {
         anim.Play("BossIdle");

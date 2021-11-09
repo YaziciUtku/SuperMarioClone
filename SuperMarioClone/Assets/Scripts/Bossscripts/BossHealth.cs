@@ -4,12 +4,10 @@ using UnityEngine;
 
 public class BossHealth : MonoBehaviour
 {
-    private Animator anim;
+
     private int bossHealthValue = 1;
     private bool canDamage;
-    private bool isDead;
-    private BossScript bossScript;
-
+  
     public int BossHealthValue
     {
         get { return bossHealthValue; }
@@ -18,9 +16,9 @@ public class BossHealth : MonoBehaviour
 
     private void Awake()
     {
-        anim = GetComponent<Animator>();
+    
         canDamage = true;
-        bossScript = GetComponent<BossScript>();
+        
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
